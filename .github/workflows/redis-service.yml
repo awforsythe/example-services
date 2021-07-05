@@ -30,7 +30,7 @@ jobs:
     - run: pytest tests
       working-directory: ./src
       env:
-        REDIS_URL: redis://redis:${{ job.services.redis.ports[6379] }}/0
+        REDIS_URL: redis://redis:6379/0
 
   vm-job:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       redis:
         image: redis
         ports:
-        - 6379/tcp
+        - 6379:6379
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 1s
@@ -53,4 +53,4 @@ jobs:
 
     - run: docker build -t examples-services .
 
-    - run: docker run -e REDIS_URL=redis://172.17.0.1:${{ job.services.redis.ports[6379] }}/0 examples-services
+    - run: docker run -e REDIS_URL=redis://172.17.0.1:6379/0 examples-services
