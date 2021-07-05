@@ -20,11 +20,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - run: npm ci
-      working-directory: ./redis
+    - run: pip install -r requirements.txt
+      working-directory: ./src
 
-    - run: node client.js
-      working-directory: ./redis
+    - run: pytest tests
+      working-directory: ./src
       env:
         REDIS_HOST: redis
         REDIS_PORT: ${{ job.services.redis.ports[6379] }}
@@ -42,11 +42,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - run: npm ci
-      working-directory: ./redis
+    - run: pip install -r requirements.txt
+      working-directory: ./src
 
-    - run: node client.js
-      working-directory: ./redis
+    - run: pytest tests
+      working-directory: ./src
       env:
         REDIS_HOST: localhost
         REDIS_PORT: ${{ job.services.redis.ports[6379] }}
