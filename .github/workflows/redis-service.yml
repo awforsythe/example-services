@@ -41,6 +41,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - run: ifconfig
+
     - run: docker build -t examples-services .
 
     - run: docker run -e REDIS_URL=redis://host.docker.internal:${{ job.services.redis.ports[6379] }}/0 examples-services
