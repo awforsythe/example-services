@@ -1,12 +1,7 @@
 name: Mongodb Service Example
 
 on:
-  push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
+  - push
 
 defaults:
   run:

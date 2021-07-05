@@ -1,12 +1,7 @@
 name: Redis Service Example
 
 on:
-  push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
+  - push
 
 jobs:
   container-job:
