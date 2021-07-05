@@ -43,4 +43,4 @@ jobs:
 
     - run: docker build -t examples-services .
 
-    - run: docker run -e REDIS_URL=redis://localhost:${{ job.services.redis.ports[6379] }}/0 examples-services
+    - run: docker run -e REDIS_URL=redis://host.docker.container:${{ job.services.redis.ports[6379] }}/0 examples-services
