@@ -47,4 +47,4 @@ jobs:
     - run: pytest tests
       working-directory: ./src
       env:
-        REDIS_HOST: redis://localhost:${{ job.services.redis.ports[6379] }}/0
+        REDIS_URL: redis://localhost:${{ job.services.redis.ports[6379] }}/0
